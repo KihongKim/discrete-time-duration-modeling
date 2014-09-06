@@ -3,9 +3,14 @@ library(mlogit)
 load("myRdata.15dt.RData")
 
 # null model
-ids = unique(myRdata.15dt$
-mnl.null <- mlogit(chosen~-1, data=myRdata.15dt, reflevel="ST")
-summary(mnl.null)
+ids = unique(myRdata.15dt$dtid)
+alt.ids = unique(myRdata.15dt$alt)
+logLik.null <- length(ids) * log(1/length(alt))
+
+data.m <- mlogit.data()
+ids = unique(data.m$id.var)
+alt.ids = unique(data.m$alt.var)
+logLik.0 <- length(ids) * log(1/length(alt.ids))
 
 # constants-only model
 m.fit.c <- mlogit(chosen~alt, data=myRdata.15dt, reflevel="ST")
