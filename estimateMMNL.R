@@ -63,7 +63,7 @@ mnl.ml.var <- mlogit(chosen~
 summary(mnl.ml.var)
 save(mnl.ml.var, file="mnl.ml.var.RData")
 
-# multilevel with covariance
+# multilevel MNL with both variance and covariance
 mnl.ml.cov <- mlogit(chosen~
 			thisH2_EO+thisH2_ES+thisH2_HC+thisH2_PB+thisH2_SH+thisH2_SR+
 			thisHC_EO+thisHC_ES+thisHC_HC+thisHC_PB+thisHC_SH+thisHC_SR|
