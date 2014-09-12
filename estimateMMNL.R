@@ -46,39 +46,40 @@ save(mnl.sl, file="mnl.sl.RData")
 
 # multilevel MNL with variance only
 mnl.ml.var <- mlogit(chosen~
-					thisH2_EO+thisH2_ES+thisH2_HC+thisH2_PB+thisH2_SH+thisH2_SR|
-					thisEO+thisES+thisHC+thisPB+thisSH+thisSR+
-					log(actDur15)+
-					hSIN1+hCOS1|0,
-  					data=mlogitData.15dt, reflevel="ST",
-  					rpar=c("H2:(intercept)"="n",
-                    		"H3:(intercept)"="n",
-                        	"EO:(intercept)"="n",
-                        	"ES:(intercept)"="n",
-                            "HC:(intercept)"="n",
-                            "PB:(intercept)"="n",
-                            "SH:(intercept)"="n",
-                            "SO:(intercept)"="n"),
-                    R=1500, halton=NA, print.level=1, panel=TRUE)
+			thisH2_EO+thisH2_ES+thisH2_HC+thisH2_PB+thisH2_SH+thisH2_SR|
+			thisEO+thisES+thisHC+thisPB+thisSH+thisSR+
+			log(actDur15)+
+			hSIN1+hCOS1|0,
+		data=mlogitData.15dt, reflevel="ST",
+		rpar=c("H2:(intercept)"="n",
+                	"H3:(intercept)"="n",
+                	"EO:(intercept)"="n",
+                	"ES:(intercept)"="n",
+                	"HC:(intercept)"="n",
+                	"PB:(intercept)"="n",
+                	"SH:(intercept)"="n",
+                	"SO:(intercept)"="n"),
+                R=1500, halton=NA, print.level=1, panel=TRUE)
 summary(mnl.ml.var)
 save(mnl.ml.var, file="mnl.ml.var.RData")
 
 # multilevel with covariance
 mnl.ml.cov <- mlogit(chosen~
-					thisH2_EO+thisH2_ES+thisH2_HC+thisH2_PB+thisH2_SH+thisH2_SR+
-					thisHC_EO+thisHC_ES+thisHC_HC+thisHC_PB+thisHC_SH+thisHC_SR|
-					thisEO+thisES+thisPB+thisSH+thisSR+
-					log(actDur15)+
-					hSIN1+hCOS1|0,
-  					data=myRdata.15dt, reflevel="ST",
-  					rpar=c("H2:(intercept)"="n",
-                    		"H3:(intercept)"="n",
-                        	"ES:(intercept)"="n",
-                        	"EO:(intercept)"="n",
-                            "HC:(intercept)"="n",
-                            "PB:(intercept)"="n",
-                            "SH:(intercept)"="n",
-                            "SR:(intercept)"="n"),
-                    R=1000, halton=NA, print.level=1, panel=TRUE, correlation=TRUE)
+			thisH2_EO+thisH2_ES+thisH2_HC+thisH2_PB+thisH2_SH+thisH2_SR+
+			thisHC_EO+thisHC_ES+thisHC_HC+thisHC_PB+thisHC_SH+thisHC_SR|
+			thisEO+thisES+thisPB+thisSH+thisSR+
+			log(actDur15)+
+			hSIN1+hCOS1|0,
+		data=myRdata.15dt, reflevel="ST",
+		rpar=c("H2:(intercept)"="n",
+			"H3:(intercept)"="n",
+			"ES:(intercept)"="n",
+			"EO:(intercept)"="n",
+			"HC:(intercept)"="n",
+			"PB:(intercept)"="n",
+			"SH:(intercept)"="n",
+			"SR:(intercept)"="n"),
+		R=1000, halton=NA, print.level=1, panel=TRUE, correlation=TRUE)
 summary(mnl.ml.cov)
 save(mnl.ml.cov, file="mnl.ml.cov.RData")
+
